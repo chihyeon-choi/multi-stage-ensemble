@@ -1,0 +1,32 @@
+epochs: 10
+grad_bound: 5.0
+log_frequency: 50
+
+dataset:
+  name: Clothing1MDatasetLoader
+  train_batch_size: 64
+  eval_batch_size: 64
+  data_path: '../FINE-master/dynamic_selection/dir_to_data/clothing1m'
+  num_of_workers: 8
+
+model:
+  name: ResNet50
+  num_classes: 10
+
+optimizer:
+  name: SGD
+  lr: 0.002
+  weight_decay: 0.001
+  momentum: 0.9
+  nesterov: True
+  
+scheduler:
+  name: MultiStepLR
+  milestones: [5,6,7,8]
+  gamma: 0.01
+
+criterion:
+  name: NCEandRCE
+  num_classes: 14
+  alpha: 10.0
+  beta: 0.1

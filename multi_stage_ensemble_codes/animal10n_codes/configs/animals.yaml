@@ -1,0 +1,24 @@
+epochs: 100
+grad_bound: 5.0
+log_frequency: 50
+
+model:
+  name: vgg19_bn
+  num_classes : 10
+  pretrained : False
+
+optimizer:
+  name: SGD
+  lr: 0.1
+  weight_decay: 0.001
+  
+scheduler:
+  name: MultiStepLR
+  milestones: [50,75]
+  gamma: 0.2
+
+criterion:
+  name: NCEandRCE
+  num_classes: 10
+  alpha: 10.0
+  beta: 0.1

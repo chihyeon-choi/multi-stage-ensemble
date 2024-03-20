@@ -1,0 +1,35 @@
+epochs: 200
+grad_bound: 5.0
+log_frequency: 100
+
+dataset:
+  name: DatasetGenerator
+  asym: True
+  train_batch_size: 128
+  eval_batch_size: 128
+  data_path: ../datasets/
+  dataset_type: 'CIFAR100'
+  num_of_workers: 8
+
+model:
+  name: ResNet34
+  num_classes : 100
+  in_channel : 3
+
+optimizer:
+  name: SGD
+  lr: 0.1
+  weight_decay: 1.e-5
+  momentum: 0.9
+
+scheduler:
+  name: MultiStepLR
+  milestones: [130]
+  gamma: 0.1
+
+criterion:
+  name: NCEandRCE
+  num_classes: 100
+  alpha: 10.0
+  beta: 0.1
+
